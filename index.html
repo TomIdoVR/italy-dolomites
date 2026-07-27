@@ -3,1168 +3,334 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Italy 2026 — Dolomites Road Trip</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Italy + Crete 2026 — Family Trip Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --cream: #f5f0e8;
-  --ink: #1a1a18;
-  --terracotta: #c4512f;
-  --sage: #4a6741;
-  --sky: #2c5f8a;
-  --gold: #c4912f;
-  --muted: #8a8070;
-  --border: #d8d0c0;
-  --card-bg: #faf7f2;
-}
 
+:root { --cream: #f5f0e8; --ink: #1a1a18; --terracotta: #c4512f; --sage: #4a6741; --sky: #2c5f8a; --gold: #c4912f; --muted: #8a8070; --border: #d8d0c0; --card-bg: #faf7f2; --green: #2d6a4f; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
-  color: var(--ink);
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-/* HERO */
-.hero {
-  background: var(--ink);
-  color: var(--cream);
-  padding: 60px 24px 52px;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: 
-    radial-gradient(ellipse at 80% 20%, rgba(196,81,47,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse at 20% 80%, rgba(44,95,138,0.15) 0%, transparent 60%);
-}
-.hero-inner { position: relative; max-width: 780px; margin: 0 auto; }
-.hero-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--terracotta);
-  margin-bottom: 16px;
-  opacity: 0.9;
-}
-.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(42px, 10vw, 80px);
-  font-weight: 900;
-  line-height: 0.95;
-  margin-bottom: 20px;
-  letter-spacing: -1px;
-}
-.hero-title em {
-  font-style: italic;
-  color: var(--terracotta);
-}
-.hero-sub {
-  font-size: 15px;
-  color: rgba(245,240,232,0.55);
-  margin-bottom: 36px;
-  font-weight: 300;
-  letter-spacing: 0.3px;
-}
-.hero-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.chip {
-  background: rgba(245,240,232,0.08);
-  border: 1px solid rgba(245,240,232,0.15);
-  border-radius: 100px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: rgba(245,240,232,0.7);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* ROUTE STRIP */
-.route-strip {
-  background: var(--terracotta);
-  color: white;
-  padding: 0 24px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  white-space: nowrap;
-}
-.route-inner {
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-  padding: 0;
-  min-width: 100%;
-}
-.route-stop {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 13px 16px;
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.route-stop .dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.5);
-  flex-shrink: 0;
-}
-.route-stop.active .dot { background: white; }
-.route-arrow {
-  color: rgba(255,255,255,0.35);
-  font-size: 12px;
-  padding: 0 2px;
-}
-
-/* QUICK STATS */
-.stats-bar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-bottom: 1px solid var(--border);
-  background: white;
-}
-.stat-item {
-  padding: 18px 16px;
-  border-right: 1px solid var(--border);
-  text-align: center;
-}
-.stat-item:last-child { border-right: none; }
-.stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1;
-  margin-bottom: 3px;
-}
-.stat-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--muted);
-  font-weight: 500;
-}
-
-/* MAIN */
-main { max-width: 780px; margin: 0 auto; padding: 32px 18px 80px; }
-
-/* SECTION HEADER */
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 36px 0 18px;
-}
-.section-header::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-.section-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 9.5px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-/* DAY CARDS */
-.day-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  margin-bottom: 14px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(26,26,24,0.04);
-}
-.day-header {
-  display: grid;
-  grid-template-columns: 72px 1fr auto;
-  align-items: stretch;
-  cursor: pointer;
-  user-select: none;
-}
-.day-num {
-  background: var(--ink);
-  color: var(--cream);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 18px 14px;
-  flex-shrink: 0;
-}
-.day-num .num {
-  font-family: 'Playfair Display', serif;
-  font-size: 30px;
-  font-weight: 900;
-  line-height: 1;
-  color: var(--gold);
-}
-.day-num .mon {
-  font-size: 9px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.4);
-  margin-top: 2px;
-}
-.day-num .dow {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.55);
-  margin-top: 3px;
-}
-.day-info {
-  padding: 16px 18px;
-  min-width: 0;
-}
-.day-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 15.5px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 3px;
-  line-height: 1.3;
-}
-.day-sub {
-  font-size: 11.5px;
-  color: var(--muted);
-  font-weight: 400;
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-.day-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-.tag {
-  font-size: 10px;
-  padding: 2px 9px;
-  border-radius: 100px;
-  font-weight: 500;
-}
-.tag-drive { background: #f0ede8; color: #6a5a40; }
-.tag-mtb { background: #eaf0e8; color: #3a5a30; }
-.tag-sight { background: #e8eef5; color: #2a4a6a; }
-.tag-food { background: #f5ece8; color: #7a3020; }
-.tag-stay { background: #f0f0e0; color: #5a5a20; }
-.day-toggle {
-  display: flex;
-  align-items: center;
-  padding: 0 18px;
-  color: var(--muted);
-  font-size: 20px;
-  transition: transform 0.3s;
-}
-.day-toggle.open { transform: rotate(180deg); }
-
-/* DAY BODY */
-.day-body { display: none; }
-.day-body.open { display: block; }
-
-.day-section {
-  padding: 18px 20px;
-  border-top: 1px solid var(--border);
-}
-.ds-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-.ds-icon { font-size: 15px; }
-.ds-title {
-  font-size: 9.5px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--muted);
-}
-
-/* ACTIVITY ITEM */
-.act-item {
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  gap: 12px;
-  background: var(--card-bg);
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
-  padding: 13px 14px;
-  margin-bottom: 9px;
-}
-.act-emoji {
-  width: 40px; height: 40px;
-  border-radius: 10px;
-  background: var(--cream);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  flex-shrink: 0;
-}
-.act-name {
-  font-weight: 600;
-  font-size: 13.5px;
-  color: var(--ink);
-  margin-bottom: 3px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  flex-wrap: wrap;
-}
-.act-badge {
-  font-size: 9.5px;
-  padding: 2px 8px;
-  border-radius: 100px;
-  font-weight: 600;
-}
+body { font-family: "DM Sans", sans-serif; background: var(--cream); color: var(--ink); font-size: 15px; line-height: 1.6; }
+.day-nav { background: var(--ink); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.day-nav-inner { max-width: 780px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; }
+.day-nav-inner::-webkit-scrollbar { display: none; }
+.nav-home { padding: 13px 16px; color: var(--terracotta); text-decoration: none; font-size: 16px; flex-shrink: 0; border-right: 1px solid rgba(255,255,255,0.08); }
+.nav-day { padding: 11px 12px; color: rgba(245,240,232,0.45); text-decoration: none; font-size: 11px; font-weight: 600; flex-shrink: 0; border-right: 1px solid rgba(255,255,255,0.06); white-space: nowrap; }
+.nav-day:hover { color: rgba(245,240,232,0.8); }
+.nav-day.active { color: var(--gold); background: rgba(255,255,255,0.05); }
+.nav-prev-next { margin-left: auto; display: flex; flex-shrink: 0; border-left: 1px solid rgba(255,255,255,0.08); }
+.nav-prev-next a { padding: 13px 16px; color: rgba(245,240,232,0.5); text-decoration: none; font-size: 14px; }
+.nav-prev-next a:hover { color: white; }
+.day-hero { background: var(--ink); color: var(--cream); padding: 36px 24px 30px; position: relative; overflow: hidden; }
+.day-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(196,81,47,0.15) 0%, transparent 60%); }
+.day-hero-inner { position: relative; max-width: 780px; margin: 0 auto; }
+.day-hero-label { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--terracotta); margin-bottom: 8px; }
+.day-hero-title { font-family: "Playfair Display", serif; font-size: clamp(28px, 6vw, 48px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.day-hero-title em { font-style: italic; color: var(--terracotta); }
+.day-hero-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { background: rgba(245,240,232,0.08); border: 1px solid rgba(245,240,232,0.15); border-radius: 100px; padding: 4px 12px; font-size: 11px; color: rgba(245,240,232,0.65); }
+main { max-width: 780px; margin: 0 auto; padding: 24px 18px 80px; }
+.section-header { display: flex; align-items: center; gap: 10px; margin: 28px 0 14px; }
+.section-header::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.section-label { font-family: "DM Mono", monospace; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.split-col { border-radius: 14px; padding: 16px; }
+.split-col.mtb { background: #eaf0e8; border: 1.5px solid #b8dbc8; }
+.split-col.no-mtb { background: #f0ede8; border: 1.5px solid #ddd0c0; }
+.split-header { font-size: 11px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.split-col.mtb .split-header { color: #2d6a4f; }
+.split-col.no-mtb .split-header { color: #6a5a40; }
+@media(max-width: 520px) { .split { grid-template-columns: 1fr; } }
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step { display: grid; grid-template-columns: 32px 1fr; gap: 12px; position: relative; }
+.step:not(:last-child)::before { content: ""; position: absolute; left: 15px; top: 32px; bottom: -4px; width: 2px; background: var(--border); }
+.step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px; position: relative; z-index: 1; }
+.step-body { padding-bottom: 20px; }
+.step-title { font-weight: 700; font-size: 13.5px; margin-bottom: 3px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.step-time { font-size: 10px; font-family: "DM Mono", monospace; color: var(--muted); background: var(--cream); padding: 2px 7px; border-radius: 100px; }
+.step-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+.step-tip { margin-top: 7px; background: #e8eef5; border-radius: 7px; padding: 7px 10px; font-size: 11.5px; color: var(--sky); line-height: 1.45; }
+.step-warn { margin-top: 7px; background: #fff3cd; border-radius: 7px; padding: 7px 10px; font-size: 11.5px; color: #856404; line-height: 1.45; }
+.card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(26,26,24,0.04); }
+.card-title { font-weight: 700; font-size: 13.5px; margin-bottom: 4px; }
+.card-sub { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.badge { font-size: 9.5px; font-weight: 700; padding: 2px 8px; border-radius: 100px; }
 .badge-highlight { background: #fdecea; color: #b03020; }
 .badge-mtb { background: #eaf0e8; color: #2a5a20; }
 .badge-tip { background: #e8eef5; color: #1a4070; }
 .badge-free { background: #f0f0e0; color: #4a4a10; }
-.act-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
-.act-tip {
-  margin-top: 8px;
-  background: #e8eef5;
-  border-radius: 7px;
-  padding: 7px 10px;
-  font-size: 11px;
-  color: var(--sky);
-  font-weight: 500;
-  line-height: 1.45;
-}
-
-/* DRIVE BOX */
-.drive-box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #f0f5ec;
-  border-radius: 10px;
-  padding: 12px 14px;
-  font-size: 13px;
-  color: var(--sage);
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-/* MAP LINK */
-.map-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--sky);
-  text-decoration: none;
-  padding: 5px 12px;
-  background: #e8eef5;
-  border-radius: 100px;
-  margin-bottom: 12px;
-  border: 1px solid rgba(44,95,138,0.15);
-}
-
-/* RESTAURANT */
-.resto-item {
-  background: var(--card-bg);
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
-  padding: 13px 14px;
-  margin-bottom: 9px;
-}
-.resto-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 5px;
-}
-.resto-name {
-  font-weight: 600;
-  font-size: 13.5px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  flex-wrap: wrap;
-}
-.resto-meta { text-align: right; flex-shrink: 0; }
-.resto-stars { font-size: 11px; color: var(--gold); }
-.resto-price { font-size: 12px; font-weight: 700; color: var(--ink); }
-.resto-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
-
-/* MTB SVG MAP */
-.map-section {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 14px;
-}
-.map-tap {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-.map-label {
-  padding: 14px 18px 10px;
-  font-family: 'DM Mono', monospace;
-  font-size: 9.5px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* NOTES CARD */
-.notes-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px 20px;
-  margin-bottom: 14px;
-}
-.notes-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--ink);
-}
-.note-item {
-  display: flex;
-  gap: 10px;
-  font-size: 12.5px;
-  color: var(--ink);
-  background: var(--card-bg);
-  border-radius: 8px;
-  padding: 10px 12px;
-  align-items: flex-start;
-  line-height: 1.55;
-  margin-bottom: 8px;
-}
-.note-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 32px 0;
-  font-family: 'Playfair Display', serif;
-  font-size: 18px;
-  letter-spacing: 3px;
-  color: var(--muted);
-}
+.badge-warn { background: #fff3cd; color: #856404; }
+.badge-booked { background: #d4edda; color: #155724; }
+.map-btn { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; color: var(--sky); text-decoration: none; padding: 4px 11px; background: #e8eef5; border-radius: 100px; margin-top: 8px; border: 1px solid rgba(44,95,138,0.15); }
+.drive-box { display: flex; align-items: center; gap: 10px; background: #f0f5ec; border-radius: 10px; padding: 11px 14px; font-size: 12.5px; color: var(--sage); font-weight: 500; margin-bottom: 10px; }
+footer { text-align: center; padding: 20px 0 60px; font-family: "Playfair Display", serif; font-size: 14px; letter-spacing: 2px; color: var(--muted); }
 footer span { color: var(--terracotta); }
 
-@media (max-width: 480px) {
-  .stats-bar { grid-template-columns: repeat(2, 1fr); }
-  .stats-bar .stat-item:nth-child(2) { border-right: none; }
+.hero {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
 }
+.hero-img {
+  position: absolute;
+  inset: 0;
+}
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  filter: brightness(0.4);
+}
+.hero-content {
+  position: relative;
+  padding: 52px 24px 44px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+.hero-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--terracotta); margin-bottom: 12px; }
+.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(40px, 9vw, 72px); font-weight: 900; line-height: 0.95; margin-bottom: 16px; letter-spacing: -1px; }
+.hero-title em { font-style: italic; color: var(--terracotta); }
+.hero-sub { font-size: 14px; color: rgba(245,240,232,0.5); margin-bottom: 24px; }
+.route-bar { background: var(--terracotta); padding: 0 24px; overflow-x: auto; white-space: nowrap; }
+.route-bar-inner { display: inline-flex; align-items: center; min-width: 100%; }
+.route-stop { display: inline-flex; align-items: center; gap: 6px; padding: 12px 14px; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); white-space: nowrap; }
+.route-stop .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.5); }
+.route-arrow { color: rgba(255,255,255,0.3); padding: 0 2px; font-size: 11px; }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<div class="hero" style="position:relative;padding:0;">
-<div style="position:absolute;inset:0;overflow:hidden;">
-  <img src="https://raw.githubusercontent.com/TomIdoVR/italy-dolomites/main/campfire.jpg" alt="Family campfire" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(0.45);">
-</div>
-<div style="position:relative;padding:60px 24px 52px;">
-  <div class="hero-inner">
-    <div class="hero-label">August 16–24, 2026 · Italy</div>
+<div class="hero">
+  <div class="hero-img">
+    <img src="campfire.jpg" alt="Family campfire">
+  </div>
+  <div class="hero-content">
+    <div class="hero-label">August 16–29, 2026 · Italy + Crete</div>
     <h1 class="hero-title">Dolomites<br><em>Road Trip</em></h1>
-    <div class="hero-sub">Rome to the Alps — eMTB, mountain passes, and the best views in Europe</div>
+    <div class="hero-sub">Bologna · Cortina · Val Gardena · Orvieto · Chania</div>
     <div class="hero-chips">
-      <div class="chip">🇮🇹 9 days · Aug 16–24</div>
-      <div class="chip">🚗 Rome → Bologna → Dolomites → Verona</div>
-      <div class="chip">🚵 3 days eMTB</div>
-      <div class="chip">👨‍👩‍👦 Family · Ages 12–15</div>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- ROUTE STRIP -->
-<div class="route-strip">
-  <div class="route-inner">
-    <div class="route-stop active"><div class="dot"></div>Rome FCO</div>
-    <div class="route-arrow">→</div>
-    <div class="route-stop"><div class="dot"></div>Bologna</div>
-    <div class="route-arrow">→</div>
-    <div class="route-stop"><div class="dot"></div>Cortina d'Ampezzo</div>
-    <div class="route-arrow">→</div>
-    <div class="route-stop"><div class="dot"></div>Val Gardena</div>
-    <div class="route-arrow">→</div>
-    <div class="route-stop"><div class="dot"></div>Verona</div>
-    <div class="route-arrow">→</div>
-    <div class="route-stop"><div class="dot"></div>Rome FCO</div>
-  </div>
-</div>
-
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat-item"><div class="stat-num">9</div><div class="stat-label">Days</div></div>
-  <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">eMTB Days</div></div>
-  <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Regions</div></div>
-  <div class="stat-item"><div class="stat-num">2,800<span style="font-size:14px">m</span></div><div class="stat-label">Max Altitude</div></div>
-</div>
-
-<!-- MAP -->
-<main>
-<div class="section-header"><div class="section-label">Route Overview</div></div>
-<div class="map-section">
-  <div class="map-label">🗺️ Trip Route — Tap to open in Google Maps</div>
-  <a class="map-tap" href="https://maps.google.com/?q=Rome,+Italy" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 380" style="width:100%;display:block;">
-      <defs>
-        <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#eef2f5"/>
-          <stop offset="100%" stop-color="#e4eaee"/>
-        </linearGradient>
-      </defs>
-      <rect width="780" height="380" fill="url(#mapbg)"/>
-      <!-- Grid -->
-      <g stroke="#d0d8de" stroke-width="0.5" opacity="0.6">
-        <line x1="0" y1="95" x2="780" y2="95" stroke-dasharray="4,4"/>
-        <line x1="0" y1="190" x2="780" y2="190" stroke-dasharray="4,4"/>
-        <line x1="0" y1="285" x2="780" y2="285" stroke-dasharray="4,4"/>
-        <line x1="195" y1="0" x2="195" y2="380" stroke-dasharray="4,4"/>
-        <line x1="390" y1="0" x2="390" y2="380" stroke-dasharray="4,4"/>
-        <line x1="585" y1="0" x2="585" y2="380" stroke-dasharray="4,4"/>
-      </g>
-      <!-- Italy outline suggestion -->
-      <text x="390" y="330" font-size="10" fill="#a0aab0" text-anchor="middle" letter-spacing="3" font-family="DM Mono, monospace">I T A L Y</text>
-      <!-- Route line -->
-      <!-- Rome(390,310) Siena(280,240) Cortina(560,80) ValGardena(490,75) Verona(380,130) Rome(390,310) -->
-      <polyline points="390,310 280,240 560,80 490,75 380,130 390,310" fill="none" stroke="#c4512f" stroke-width="2.5" stroke-dasharray="10,5" stroke-linecap="round" opacity="0.8"/>
-      <!-- Day labels along route -->
-      <text x="330" y="282" font-size="9" fill="#c4512f" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="600">Day 1</text>
-      <text x="430" y="155" font-size="9" fill="#c4512f" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="600">Day 2</text>
-      <text x="545" y="105" font-size="9" fill="#c4512f" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="600">Day 7</text>
-
-      <!-- Markers -->
-      <!-- Rome -->
-      <circle cx="390" cy="310" r="12" fill="#1a1a18" opacity="0.9"/>
-      <text x="390" y="314" font-size="11" text-anchor="middle">✈️</text>
-      <text x="390" y="334" font-size="10" fill="#1a1a18" text-anchor="middle" font-weight="700" font-family="DM Sans, sans-serif">Rome FCO</text>
-
-      <!-- Siena -->
-      <circle cx="280" cy="240" r="12" fill="#4a6741" opacity="0.9"/>
-      <text x="280" y="244" font-size="11" text-anchor="middle">🏛️</text>
-      <text x="280" y="263" font-size="10" fill="#1a1a18" text-anchor="middle" font-weight="700" font-family="DM Sans, sans-serif">Siena</text>
-      <text x="280" y="275" font-size="9" fill="#8a8070" text-anchor="middle" font-family="DM Sans, sans-serif">Night 1</text>
-
-      <!-- Cortina -->
-      <circle cx="560" cy="80" r="12" fill="#2c5f8a" opacity="0.9"/>
-      <text x="560" y="84" font-size="11" text-anchor="middle">🏔️</text>
-      <text x="560" y="103" font-size="10" fill="#1a1a18" text-anchor="middle" font-weight="700" font-family="DM Sans, sans-serif">Cortina</text>
-      <text x="560" y="115" font-size="9" fill="#8a8070" text-anchor="middle" font-family="DM Sans, sans-serif">Nights 2–3</text>
-
-      <!-- Val Gardena -->
-      <circle cx="490" cy="75" r="12" fill="#c4512f" opacity="0.9"/>
-      <text x="490" y="79" font-size="11" text-anchor="middle">🚵</text>
-      <text x="490" y="98" font-size="10" fill="#1a1a18" text-anchor="middle" font-weight="700" font-family="DM Sans, sans-serif">Val Gardena</text>
-      <text x="490" y="110" font-size="9" fill="#8a8070" text-anchor="middle" font-family="DM Sans, sans-serif">Nights 4–6</text>
-
-      <!-- Verona -->
-      <circle cx="380" cy="130" r="12" fill="#c4912f" opacity="0.9"/>
-      <text x="380" y="134" font-size="11" text-anchor="middle">🏟️</text>
-      <text x="380" y="153" font-size="10" fill="#1a1a18" text-anchor="middle" font-weight="700" font-family="DM Sans, sans-serif">Verona</text>
-      <text x="380" y="165" font-size="9" fill="#8a8070" text-anchor="middle" font-family="DM Sans, sans-serif">Night 7</text>
-
-      <!-- Legend -->
-      <rect x="16" y="16" width="148" height="88" rx="8" fill="white" opacity="0.85"/>
-      <circle cx="30" cy="34" r="6" fill="#1a1a18"/><text x="42" y="38" font-size="10" fill="#333" font-family="DM Sans, sans-serif">Start / End</text>
-      <circle cx="30" cy="54" r="6" fill="#4a6741"/><text x="42" y="58" font-size="10" fill="#333" font-family="DM Sans, sans-serif">Overnight stop</text>
-      <circle cx="30" cy="74" r="6" fill="#c4512f"/><text x="42" y="78" font-size="10" fill="#333" font-family="DM Sans, sans-serif">MTB base</text>
-      <line x1="22" y1="94" x2="42" y2="94" stroke="#c4512f" stroke-width="2" stroke-dasharray="4,3"/><text x="48" y="98" font-size="10" fill="#333" font-family="DM Sans, sans-serif">Route</text>
-    </svg>
-  </a>
-  <!-- Quick location buttons -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 16px 18px;">
-    <a href="https://maps.google.com/?q=Siena,+Italy" target="_blank" style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:10px;text-decoration:none;color:var(--ink);">
-      <span style="font-size:17px">🏛️</span><div><div style="font-size:12px;font-weight:600">Siena</div><div style="font-size:10px;color:var(--muted)">Tuscany · Night 1</div></div>
-    </a>
-    <a href="https://maps.google.com/?q=Cortina+d'Ampezzo,+Italy" target="_blank" style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:10px;text-decoration:none;color:var(--ink);">
-      <span style="font-size:17px">🏔️</span><div><div style="font-size:12px;font-weight:600">Cortina</div><div style="font-size:10px;color:var(--muted)">Dolomites · Nights 2–3</div></div>
-    </a>
-    <a href="https://maps.google.com/?q=Ortisei,+Val+Gardena,+Italy" target="_blank" style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:10px;text-decoration:none;color:var(--ink);">
-      <span style="font-size:17px">🚵</span><div><div style="font-size:12px;font-weight:600">Val Gardena</div><div style="font-size:10px;color:var(--muted)">MTB base · Nights 4–6</div></div>
-    </a>
-    <a href="https://maps.google.com/?q=Verona,+Italy" target="_blank" style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--card-bg);border:1.5px solid var(--border);border-radius:10px;text-decoration:none;color:var(--ink);">
-      <span style="font-size:17px">🏟️</span><div><div style="font-size:12px;font-weight:600">Verona</div><div style="font-size:10px;color:var(--muted)">Last night · Night 7</div></div>
-    </a>
-  </div>
-</div>
-
-<!-- DAY CARDS -->
-<div class="section-header"><div class="section-label">Day by Day</div></div>
-
-
-<div class="day-card">
-  <div class="day-header" onclick="toggle(this)">
-    <div class="day-num"><div class="num">16</div><div class="mon">AUG</div><div class="dow">SUN</div></div>
-    <div class="day-info">
-      <div class="day-title">Rome → Bologna</div>
-      <div class="day-sub">Land FCO afternoon · Pick up car · 3.5h drive · Bologna evening</div>
-      <div class="day-tags">
-        <span class="tag tag-drive">🚗 3h drive</span>
-        <span class="tag tag-food">🍷 Tuscan dinner</span>
-        <span class="tag tag-stay">🏨 Siena</span>
-      </div>
-    </div>
-    <div class="day-toggle">▾</div>
-  </div>
-  <div class="day-body">
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">✈️</span><span class="ds-title">Arrival</span></div>
-      <div class="act-item">
-        <div class="act-emoji">🚗</div>
-        <div>
-          <div class="act-name">Pick up rental car at FCO <span class="act-badge badge-tip">Book in advance</span></div>
-          <div class="act-desc">Book an SUV or medium wagon — mountain roads in the Dolomites are narrow and winding. GPS is essential. August 16th is Ferragosto (Italian national holiday) — fuel stations may be closed, stock up in Rome before leaving.</div>
-          <div class="act-tip">💡 Ferragosto tip: Buy food and snacks before leaving Rome. Supermarkets and many restaurants will be closed along the route.</div>
-        </div>
-      </div>
-      <a class="map-btn" href="https://maps.google.com/?q=Rome+Fiumicino+Airport" target="_blank">📍 FCO Airport</a>
-    </div>
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">🛣️</span><span class="ds-title">Drive — Rome to Siena</span></div>
-      <div class="drive-box">🛣️ <span><strong>3h</strong> — A1 Autostrada north to Siena exit. Arrive 4–5pm. Via Cassia (SS2) is more scenic, adds 45 min.</span></div>
-      <a class="map-btn" href="https://maps.google.com/?q=Rome+to+Bologna+Italy" target="_blank">📍 Directions to Bologna</a>
-    </div>
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">🌆</span><span class="ds-title">Siena Evening</span></div>
-      <div class="act-item">
-        <div class="act-emoji">🏛️</div>
-        <div>
-          <div class="act-name">Piazza del Campo <span class="act-badge badge-free">Free</span></div>
-          <div class="act-desc">One of Europe's finest medieval squares — shell-shaped, sloping piazza. Drop bags, walk down for a gelato and evening aperitivo. The kids will love the atmosphere. 15 min walk from most hotels.</div>
-        </div>
-      </div>
-      <a class="map-btn" href="https://maps.google.com/?q=Piazza+del+Campo,+Siena,+Italy" target="_blank">📍 Piazza del Campo</a>
-    </div>
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">🍽️</span><span class="ds-title">Dinner</span></div>
-      <div class="resto-item">
-        <div class="resto-top">
-          <div class="resto-name">Osteria Le Logge <span class="act-badge badge-highlight">Book Ahead</span></div>
-          <a class="map-btn" href="https://maps.google.com/?q=Osteria+Le+Logge,+Siena,+Italy" target="_blank">📍 Directions</a>
-          <div class="resto-meta"><div class="resto-stars">★★★★½</div><div class="resto-price">$$$</div></div>
-        </div>
-        <div class="resto-desc">Classic Sienese cucina in a stunning 19th-century pharmacy interior. Wild boar pappardelle, Chianina beef, local Chianti. One of Siena's best.</div>
-      </div>
-      <div class="resto-item">
-        <div class="resto-top">
-          <div class="resto-name">Trattoria Papei <span class="act-badge badge-tip">Local Classic</span></div>
-          <a class="map-btn" href="https://maps.google.com/?q=Trattoria+Papei,+Siena,+Italy" target="_blank">📍 Directions</a>
-          <div class="resto-meta"><div class="resto-stars">★★★★</div><div class="resto-price">$$</div></div>
-        </div>
-        <div class="resto-desc">Unpretentious, family-run, enormous portions. Ribollita, pici cacio e pepe, bistecca. Great for kids. Near Piazza del Campo.</div>
-      </div>
+      <div class="chip">🇮🇹 9 days Italy · Aug 16–24</div>
+      <div class="chip">🇬🇷 5 days Crete · Aug 24–29</div>
+      <div class="chip">🚵 3 eMTB days</div>
+      <div class="chip">👨‍👩‍👦 2 families · ages 12–15</div>
     </div>
   </div>
 </div>
 
-<div class="day-card">
-  <div class="day-header" onclick="toggle(this)">
-    <div class="day-num"><div class="num">17</div><div class="mon">AUG</div><div class="dow">MON</div></div>
-    <div class="day-info">
-      <div class="day-title">Siena → Cortina d'Ampezzo</div>
-      <div class="day-sub">3.5h drive · Dolomites arrival · Rent eMTBs · Acclimatize</div>
-      <div class="day-tags">
-        <span class="tag tag-drive">🚗 3.5h drive</span>
-        <span class="tag tag-mtb">🚵 Rent eMTBs</span>
-        <span class="tag tag-stay">🏨 Cortina</span>
-      </div>
-    </div>
-    <div class="day-toggle">▾</div>
-  </div>
-  <div class="day-body">
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">☕</span><span class="ds-title">Morning — Siena</span></div>
-      <div class="act-item">
-        <div class="act-emoji">🥐</div>
-        <div>
-          <div class="act-name">Quick Siena morning</div>
-          <div class="act-desc">Cornetto and cappuccino at a local bar near Piazza del Campo. Leave by 9am to arrive Cortina early afternoon. The drive is beautiful and worth doing in daylight.</div>
-        </div>
-      </div>
-    </div>
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">🛣️</span><span class="ds-title">Drive — Siena to Cortina</span></div>
-      <div class="drive-box">🛣️ <span><strong>3.5–4h</strong> — A1 north → A22 Autostrada del Brennero → exit Bressanone → mountain roads to Cortina. Spectacular scenery the last hour.</span></div>
-      <a class="map-btn" href="https://maps.google.com/?q=Siena+to+Cortina+d'Ampezzo+Italy" target="_blank">📍 Directions to Cortina</a>
-      <div class="act-item">
-        <div class="act-emoji">⚠️</div>
-        <div>
-          <div class="act-name">Altitude acclimatization <span class="act-badge badge-highlight">Important</span></div>
-          <div class="act-desc">Cortina sits at 1,224m. The trails reach 2,500m+. Don't ride hard the first day — headaches and fatigue are common if you jump straight to altitude. An easy afternoon walk is ideal.</div>
-        </div>
-      </div>
-    </div>
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">🚵</span><span class="ds-title">Afternoon — Rent eMTBs</span></div>
-      <div class="act-item">
-        <div class="act-emoji">🚵</div>
-        <div>
-          <div class="act-name">Sport Varda Bike Rental <span class="act-badge badge-mtb">Book Ahead!</span></div>
-          <div class="act-desc">Best eMTB rental in Cortina. Full-suspension Specialized or Trek eMTB, includes helmet and bike fitting. August stock runs out fast — book online before the trip.</div>
-          <div class="act-tip">💡 Cost: ~70–90€/bike/day. For 2–3 days, ask about multi-day discount. Kids sizes available for ages 12+.</div>
-        </div>
-      </div>
-      <a class="map-btn" href="https://maps.google.com/?q=Sport+Varda,+Cortina+d'Ampezzo" target="_blank">📍 Sport Varda</a>
-    </div>
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">🥾</span><span class="ds-title">Afternoon — Easy Walk</span></div>
-      <div class="act-item">
-        <div class="act-emoji">🏔️</div>
-        <div>
-          <div class="act-name">Lago Ghedina or Cortina Lakeside Walk <span class="act-badge badge-free">Free</span></div>
-          <a class="map-btn" href="https://maps.google.com/?q=Lago+Ghedina,+Cortina+d'Ampezzo" target="_blank">📍 Lago Ghedina</a>
-          <div class="act-desc">Short, flat walk at altitude. Perfect for acclimatization. Lago Ghedina is 20 min from center — small mountain lake surrounded by forest. Kids will enjoy it.</div>
-        </div>
-      </div>
-    </div>
+<div class="route-bar">
+  <div class="route-bar-inner">
+    <div class="route-stop"><div class="dot"></div>Rome FCO</div><div class="route-arrow">→</div>
+    <div class="route-stop"><div class="dot"></div>Bologna</div><div class="route-arrow">→</div>
+    <div class="route-stop"><div class="dot"></div>Cortina</div><div class="route-arrow">→</div>
+    <div class="route-stop"><div class="dot"></div>Val Gardena</div><div class="route-arrow">→</div>
+    <div class="route-stop"><div class="dot"></div>Orvieto</div><div class="route-arrow">→</div>
+    <div class="route-stop"><div class="dot"></div>FCO</div><div class="route-arrow">✈️</div>
+    <div class="route-stop"><div class="dot"></div>Chania 🇬🇷</div>
   </div>
 </div>
 
-</div>
-<div class="day-card">
-  <div class="day-header" onclick="toggle(this)">
-    <div class="day-num" style="background:#2c5f8a;"><div class="num" style="color:#7bbfea;">18</div><div class="mon">AUG</div><div class="dow">TUE</div></div>
-    <div class="day-info">
-      <div class="day-title">MTB Day 1 — Cinque Torri</div>
-      <div class="day-sub">Cortina · Gondola up · 5 Towers trail · 1,800–2,360m</div>
-      <div class="day-tags">
-        <span class="tag tag-mtb">🚵 Full MTB Day</span>
-        <span class="tag tag-sight">🏔️ 2,360m</span>
-        <span class="tag tag-stay">🏨 Cortina</span>
-      </div>
+<main style="max-width:780px;margin:0 auto;padding:24px 18px 60px;">
+
+<div class="section-header"><div class="section-label">🗓️ Day by Day</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+
+<a href="day-16.html" style="text-decoration:none;color:inherit;">
+<div style="background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(26,26,24,0.04);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(26,26,24,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(26,26,24,0.04)'">
+  <div style="background:#c4512f;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+    <div style="font-size:24px;">✈️</div>
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);">Aug 16 · SUN</div>
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;line-height:1.2;">Rome → Bologna</div>
     </div>
-    <div class="day-toggle">▾</div>
   </div>
-  <div class="day-body">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 16px 0;">
-  <div style="background:#eaf0e8;border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;color:#2d6a4f;text-align:center;">🚵 עם רכיבה</div>
-  <div style="background:#f0ede8;border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;color:#6a5a40;text-align:center;">🥾 ללא רכיבה</div>
-</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 16px;">
-  <div style="background:#eaf0e8;border-radius:10px;padding:12px;">
-    <div class="act-item" style="background:white;"><div class="act-emoji">🚵</div><div><div class="act-name" style="font-size:12px;">Cinque Torri Loop <span class="act-badge badge-mtb">eMTB</span></div><div class="act-desc">גונדולה ל-2,000m, רכיבה סביב 5 הצוקים. ~18km. תעלות מלה"ע הראשונה.</div><div class="act-tip">💡 יציאה 8am. חזרה לפני 13:00.</div></div></div>
-    <a class="map-btn" href="https://maps.google.com/?q=Cinque+Torri,+Cortina+d'Ampezzo" target="_blank">📍 Cinque Torri</a>
-  </div>
-  <div style="background:#f0ede8;border-radius:10px;padding:12px;">
-    <div class="act-item" style="background:white;"><div class="act-emoji">🏔️</div><div><div class="act-name" style="font-size:12px;">Tre Cime di Lavaredo <span class="act-badge badge-highlight">Must Do</span></div><div class="act-desc">הנוף הכי אייקוני בדולומיטים. טיול הליכה ~3 שעות סביב 3 הצוקים. מרתק לילדים.</div><div class="act-tip">💡 יציאה מוקדמת — חנייה מתמלאת עד 9am.</div></div></div>
-    <a class="map-btn" href="https://maps.google.com/?q=Tre+Cime+di+Lavaredo,+Italy" target="_blank">📍 Tre Cime</a>
-    <div class="act-item" style="background:white;margin-top:8px;"><div class="act-emoji">🌊</div><div><div class="act-name" style="font-size:12px;">Lago di Misurina</div><div class="act-desc">אגם הרים קסום 10 דק' מ-Tre Cime. קפה ונוף להתאוששות.</div></div></div>
-    <a class="map-btn" href="https://maps.google.com/?q=Lago+di+Misurina,+Italy" target="_blank">📍 Lago di Misurina</a>
+  <div style="padding:12px 16px;">
+    <div style="font-size:12px;color:var(--muted);">נחיתה FCO · נסיעה 3.5h · בולוניה</div>
+    <div style="margin-top:10px;font-size:11px;font-weight:600;color:var(--sky);">פתח תכנון יומי →</div>
   </div>
 </div>
-<div class="day-section"><div class="ds-label"><span class="ds-icon">🍽️</span><span class="ds-title">Lunch</span></div>
-<div class="act-item"><div class="act-emoji">🍽️</div><div><div class="act-name">Rifugio Cinque Torri <span class="act-badge badge-tip">2,137m</span></div><div class="act-desc">Schlutzkrapfen, גולאש, שטרודל. מזומן בלבד.</div></div></div>
-<a class="map-btn" href="https://maps.google.com/?q=Rifugio+Cinque+Torri,+Cortina+d'Ampezzo" target="_blank">📍 Rifugio Cinque Torri</a>
-</div>
-<div class="day-section"><div class="ds-label"><span class="ds-icon">🌆</span><span class="ds-title">Evening</span></div>
-<div class="act-item"><div class="act-emoji">🍦</div><div><div class="act-name">Corso Italia</div><div class="act-desc">הרחוב ההולך הראשי. גלידה, אפריטיב ב-Bar Lovat.</div></div></div>
-<a class="map-btn" href="https://maps.google.com/?q=Corso+Italia,+Cortina+d'Ampezzo" target="_blank">📍 Corso Italia</a>
-</div>
-</div>
-<div class="day-card">
-  <div class="day-header" onclick="toggle(this)">
-    <div class="day-num"><div class="num">19</div><div class="mon">AUG</div><div class="dow">WED</div></div>
-    <div class="day-info">
-      <div class="day-title">Cortina → Val Gardena + Lago di Braies</div>
-      <div class="day-sub">Stunning lake stop · 1.5h drive · Arrive Ortisei · Afternoon easy ride</div>
-      <div class="day-tags">
-        <span class="tag tag-drive">🚗 1.5h drive</span>
-        <span class="tag tag-sight">🏞️ Lago di Braies</span>
-        <span class="tag tag-mtb">🚵 Easy ride PM</span>
-        <span class="tag tag-stay">🏨 Val Gardena</span>
-      </div>
+</a>
+<a href="day-17.html" style="text-decoration:none;color:inherit;">
+<div style="background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(26,26,24,0.04);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(26,26,24,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(26,26,24,0.04)'">
+  <div style="background:#2c5f8a;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+    <div style="font-size:24px;">🚗</div>
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);">Aug 17 · MON</div>
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;line-height:1.2;">Bologna → Cortina</div>
     </div>
-    <div class="day-toggle">▾</div>
   </div>
-  <div class="day-body">
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">🏞️</span><span class="ds-title">Morning Stop — Lago di Braies</span></div>
-      <a class="map-btn" href="https://maps.google.com/?q=Lago+di+Braies,+Italy" target="_blank">📍 Lago di Braies</a>
-      <div class="act-item">
-        <div class="act-emoji">🌊</div>
-        <div>
-          <div class="act-name">Lago di Braies (Pragser Wildsee) <span class="act-badge badge-highlight">Must Do</span></div>
-          <div class="act-desc">The most photographed lake in the Dolomites — emerald green water reflecting vertical limestone walls. Rowboats for rent. Arrive before 9am to beat the crowds and parking chaos. ~30 min detour off the Cortina → Val Gardena route.</div>
-          <div class="act-tip">💡 Seriously — arrive before 9am. After 10am the parking lot fills up and it's chaos. It's worth the early start.</div>
-        </div>
-      </div>
+  <div style="padding:12px 16px;">
+    <div style="font-size:12px;color:var(--muted);">נסיעה 3.5h · השכרת eMTB · הסתגלות</div>
+    <div style="margin-top:10px;font-size:11px;font-weight:600;color:var(--sky);">פתח תכנון יומי →</div>
+  </div>
+</div>
+</a>
+<a href="day-18.html" style="text-decoration:none;color:inherit;">
+<div style="background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(26,26,24,0.04);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(26,26,24,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(26,26,24,0.04)'">
+  <div style="background:#2d6a4f;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+    <div style="font-size:24px;">🚵</div>
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);">Aug 18 · TUE</div>
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;line-height:1.2;">MTB — Cinque Torri<span style="font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;background:#eaf0e8;color:#2d6a4f;margin-left:6px;">🚵 MTB Day</span></div>
     </div>
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">🛣️</span><span class="ds-title">Drive to Val Gardena</span></div>
-      <div class="drive-box">🛣️ <span><strong>1.5h</strong> from Cortina (add 30 min for Lago di Braies stop). Route through Brunico, then SS242 into the valley. Last stretch into Ortisei is spectacular.</span></div>
-      <a class="map-btn" href="https://maps.google.com/?q=Ortisei,+Val+Gardena,+Italy" target="_blank">📍 Ortisei, Val Gardena</a>
+  </div>
+  <div style="padding:12px 16px;">
+    <div style="font-size:12px;color:var(--muted);">Cinque Torri / Tre Cime · 2,250m</div>
+    <div style="margin-top:10px;font-size:11px;font-weight:600;color:var(--sky);">פתח תכנון יומי →</div>
+  </div>
+</div>
+</a>
+<a href="day-19.html" style="text-decoration:none;color:inherit;">
+<div style="background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(26,26,24,0.04);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(26,26,24,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(26,26,24,0.04)'">
+  <div style="background:#2c5f8a;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+    <div style="font-size:24px;">🌊</div>
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);">Aug 19 · WED</div>
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;line-height:1.2;">Cortina → Val Gardena</div>
     </div>
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">🚵</span><span class="ds-title">Afternoon — Rent eMTBs + Easy Ride</span></div>
-      <div class="act-item">
-        <div class="act-emoji">🚵</div>
-        <div>
-          <div class="act-name">Intersport Ortisei eMTB Rental <span class="act-badge badge-mtb">Book Ahead</span></div>
-          <div class="act-desc">Largest selection in the valley. Full-suspension eMTB, sizes for adults and teens. Multi-day rentals available. Pick up bikes, do an easy afternoon loop to get oriented.</div>
-          <div class="act-tip">💡 Cost: ~60–80€/bike/day. Buy a Dolomiti Superski bike lift pass here too — covers all gondolas in the area for your riding days.</div>
-        </div>
-      </div>
-      <a class="map-btn" href="https://maps.google.com/?q=Intersport+Ortisei,+Val+Gardena" target="_blank">📍 Intersport Ortisei</a>
+  </div>
+  <div style="padding:12px 16px;">
+    <div style="font-size:12px;color:var(--muted);">Lago di Braies · השכרת eMTB</div>
+    <div style="margin-top:10px;font-size:11px;font-weight:600;color:var(--sky);">פתח תכנון יומי →</div>
+  </div>
+</div>
+</a>
+<a href="day-20.html" style="text-decoration:none;color:inherit;">
+<div style="background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(26,26,24,0.04);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(26,26,24,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(26,26,24,0.04)'">
+  <div style="background:#c4912f;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+    <div style="font-size:24px;">⭐</div>
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);">Aug 20 · THU</div>
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;line-height:1.2;">MTB — Alpe di Siusi<span style="font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;background:#eaf0e8;color:#2d6a4f;margin-left:6px;">🚵 MTB Day</span></div>
     </div>
+  </div>
+  <div style="padding:12px 16px;">
+    <div style="font-size:12px;color:var(--muted);">Panorama Trail · הייליט של הטיול</div>
+    <div style="margin-top:10px;font-size:11px;font-weight:600;color:var(--sky);">פתח תכנון יומי →</div>
+  </div>
+</div>
+</a>
+<a href="day-21.html" style="text-decoration:none;color:inherit;">
+<div style="background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(26,26,24,0.04);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(26,26,24,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(26,26,24,0.04)'">
+  <div style="background:#8a8070;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+    <div style="font-size:24px;">😴</div>
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);">Aug 21 · FRI</div>
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;line-height:1.2;">Free Day</div>
+    </div>
+  </div>
+  <div style="padding:12px 16px;">
+    <div style="font-size:12px;color:var(--muted);">Lago di Carezza · Santa Maddalena · מנוחה</div>
+    <div style="margin-top:10px;font-size:11px;font-weight:600;color:var(--sky);">פתח תכנון יומי →</div>
+  </div>
+</div>
+</a>
+<a href="day-22.html" style="text-decoration:none;color:inherit;">
+<div style="background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(26,26,24,0.04);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(26,26,24,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(26,26,24,0.04)'">
+  <div style="background:#c4512f;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+    <div style="font-size:24px;">🏆</div>
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);">Aug 22 · SAT</div>
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;line-height:1.2;">MTB — Sella Ronda<span style="font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;background:#eaf0e8;color:#2d6a4f;margin-left:6px;">🚵 MTB Day</span></div>
+    </div>
+  </div>
+  <div style="padding:12px 16px;">
+    <div style="font-size:12px;color:var(--muted);">4 מעברים · 53km · נגד השעון</div>
+    <div style="margin-top:10px;font-size:11px;font-weight:600;color:var(--sky);">פתח תכנון יומי →</div>
+  </div>
+</div>
+</a>
+<a href="day-23.html" style="text-decoration:none;color:inherit;">
+<div style="background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(26,26,24,0.04);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(26,26,24,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(26,26,24,0.04)'">
+  <div style="background:#4a6741;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+    <div style="font-size:24px;">🏛️</div>
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);">Aug 23 · SUN</div>
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;line-height:1.2;">Val Gardena → Orvieto</div>
+    </div>
+  </div>
+  <div style="padding:12px 16px;">
+    <div style="font-size:12px;color:var(--muted);">Duomo · מערות · יין אומברי</div>
+    <div style="margin-top:10px;font-size:11px;font-weight:600;color:var(--sky);">פתח תכנון יומי →</div>
+  </div>
+</div>
+</a>
+<a href="day-24.html" style="text-decoration:none;color:inherit;">
+<div style="background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(26,26,24,0.04);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(26,26,24,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(26,26,24,0.04)'">
+  <div style="background:#1a3a5c;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+    <div style="font-size:24px;">✈️</div>
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);">Aug 24 · MON</div>
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;line-height:1.2;">Orvieto → FCO → Crete</div>
+    </div>
+  </div>
+  <div style="padding:12px 16px;">
+    <div style="font-size:12px;color:var(--muted);">Aegean 18:30 · חניה 23:20</div>
+    <div style="margin-top:10px;font-size:11px;font-weight:600;color:var(--sky);">פתח תכנון יומי →</div>
+  </div>
+</div>
+</a>
+</div>
+
+<div class="section-header"><div class="section-label">✈️ Flights</div></div>
+
+<div style="display:grid;gap:8px;">
+  <div style="background:#f0f5ff;border:1px solid #c0cce8;border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;">
+    <div><div style="font-size:11px;font-weight:600;">✈️ JFK → Rome FCO</div><div style="font-size:10px;color:var(--muted);">Aug 16 · Norse N0 402 · 00:30 → 14:30</div></div>
+    <span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px;background:#d4edda;color:#155724;">✅ TCS7MX</span>
+  </div>
+  <div style="background:#f0f5ff;border:1px solid #c0cce8;border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;">
+    <div><div style="font-size:11px;font-weight:600;">✈️ FCO → Chania (via Athens)</div><div style="font-size:10px;color:var(--muted);">Aug 24 · Aegean · 18:30 → 23:20</div></div>
+    <span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px;background:#d4edda;color:#155724;">✅ 88D3AK</span>
+  </div>
+  <div style="background:#f0f5ff;border:1px solid #c0cce8;border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;">
+    <div><div style="font-size:11px;font-weight:600;">✈️ Chania → FCO → JFK</div><div style="font-size:10px;color:var(--muted);">Aug 29 · Aegean 06:00 + Norse N0 401 19:05</div></div>
+    <span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px;background:#d4edda;color:#155724;">✅ Booked</span>
   </div>
 </div>
 
-</div>
-<div class="day-card">
-  <div class="day-header" onclick="toggle(this)">
-    <div class="day-num" style="background:#2c5f8a;"><div class="num" style="color:#7bbfea;">20</div><div class="mon">AUG</div><div class="dow">THU</div></div>
-    <div class="day-info">
-      <div class="day-title">MTB Day 2 — Alpe di Siusi</div>
-      <div class="day-sub">Europe's largest high-altitude alpine meadow · Gondola up · 25km panorama trail</div>
-      <div class="day-tags">
-        <span class="tag tag-mtb">🚵 Full MTB Day</span>
-        <span class="tag tag-sight">🏔️ 2,000m</span>
-        <span class="tag tag-stay">🏨 Val Gardena</span>
-      </div>
-    </div>
-    <div class="day-toggle">▾</div>
+<div class="section-header"><div class="section-label">🏨 Accommodations</div></div>
+
+<div style="display:grid;gap:8px;">
+  <div style="background:#f0f9f4;border:1.5px solid #b8dbc8;border-radius:10px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center;">
+    <div><div style="font-size:11px;font-weight:600;">Aug 16–17 · Bologna</div><div style="font-size:10px;color:var(--muted);">Royal Hotel Carlton · PIN: 8474</div></div>
+    <span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px;background:#d4edda;color:#155724;">✅ Paid</span>
   </div>
-  <div class="day-body">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 16px 0;">
-  <div style="background:#eaf0e8;border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;color:#2d6a4f;text-align:center;">🚵 עם רכיבה</div>
-  <div style="background:#f0ede8;border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;color:#6a5a40;text-align:center;">🥾 ללא רכיבה</div>
-</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 16px;">
-  <div style="background:#eaf0e8;border-radius:10px;padding:12px;">
-    <div class="act-item" style="background:white;"><div class="act-emoji">🏔️</div><div><div class="act-name" style="font-size:12px;">Panorama Trail <span class="act-badge badge-highlight">⭐ Best Day</span></div><div class="act-desc">גונדולה מאורטיזיי ל-Alpe di Siusi. 25km singletrack במרעות עם Sassolungo מעל. ההייליט של הטיול.</div><div class="act-tip">💡 Bullaccia התחממות, Panorama Trail לנוף.</div></div></div>
-    <a class="map-btn" href="https://maps.google.com/?q=Alpe+di+Siusi,+Italy" target="_blank">📍 Alpe di Siusi</a>
+  <div style="background:#f0f9f4;border:1.5px solid #b8dbc8;border-radius:10px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center;">
+    <div><div style="font-size:11px;font-weight:600;">Aug 17–19 · Cortina</div><div style="font-size:10px;color:var(--muted);">Hotel Villa Argentina · 4 rooms · PIN: 5037</div></div>
+    <span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px;background:#fff3cd;color:#856404;">⚠️ Unpaid</span>
   </div>
-  <div style="background:#f0ede8;border-radius:10px;padding:12px;">
-    <div class="act-item" style="background:white;"><div class="act-emoji">🌸</div><div><div class="act-name" style="font-size:12px;">Alpe di Siusi — טיול רגלי</div><div class="act-desc">גונדולה לאותו מישור. טיולים קלים בין פרחי הבר. מתאים לכל הגילאים.</div></div></div>
-    <a class="map-btn" href="https://maps.google.com/?q=Compatsch,+Alpe+di+Siusi" target="_blank">📍 Compatsch</a>
-    <div class="act-item" style="background:white;margin-top:8px;"><div class="act-emoji">🏘️</div><div><div class="act-name" style="font-size:12px;">Castelrotto / Kastelruth</div><div class="act-desc">כפר טירולי מושלם 15 דק' מאורטיזיי. שוק, פעמוני כנסייה, שטרודל.</div></div></div>
-    <a class="map-btn" href="https://maps.google.com/?q=Castelrotto,+Italy" target="_blank">📍 Castelrotto</a>
+  <div style="background:#f0f9f4;border:1.5px solid #b8dbc8;border-radius:10px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center;">
+    <div><div style="font-size:11px;font-weight:600;">Aug 19–23 · Val Gardena</div><div style="font-size:10px;color:var(--muted);">Villa Vastle Airbnb · Via Mureda 42</div></div>
+    <span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px;background:#d4edda;color:#155724;">✅ Booked</span>
   </div>
-</div>
-<div class="day-section"><div class="ds-label"><span class="ds-icon">🍽️</span><span class="ds-title">Lunch on the Alm</span></div>
-<div class="act-item"><div class="act-emoji">🥾</div><div><div class="act-name">Rifugio Compatsch or Rifugio Zallinger</div><div class="act-desc">Speck und Knödel, Kaiserschmarrn. נוף מהגבעות. לשריין מקום מראש.</div></div></div>
-<a class="map-btn" href="https://maps.google.com/?q=Rifugio+Compatsch,+Alpe+di+Siusi" target="_blank">📍 Rifugio Compatsch</a>
-</div>
-</div>
-</div>
-<div class="day-card">
-  <div class="day-header" onclick="toggle(this)">
-    <div class="day-num"><div class="num">21</div><div class="mon">AUG</div><div class="dow">FRI</div></div>
-    <div class="day-info">
-      <div class="day-title">Free Day — Sellaronda or Rest</div>
-      <div class="day-sub">Sellaronda Bike Day option · Or lakes, villages, Sassolungo hike</div>
-      <div class="day-tags">
-        <span class="tag tag-mtb">🚵 Optional MTB</span>
-        <span class="tag tag-sight">🏔️ Explore</span>
-        <span class="tag tag-stay">🏨 Val Gardena</span>
-      </div>
-    </div>
-    <div class="day-toggle">▾</div>
+  <div style="background:#f0f9f4;border:1.5px solid #b8dbc8;border-radius:10px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center;">
+    <div><div style="font-size:11px;font-weight:600;">Aug 23–24 · Orvieto</div><div style="font-size:10px;color:var(--muted);">Hotel Maitani או B&B מקומי</div></div>
+    <span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px;background:#f8d7da;color:#721c24;">❌ Book Now</span>
   </div>
-  <div class="day-body">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 16px 0;">
-  <div style="background:#eaf0e8;border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;color:#2d6a4f;text-align:center;">🚵 עם רכיבה</div>
-  <div style="background:#f0ede8;border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;color:#6a5a40;text-align:center;">🥾 ללא רכיבה</div>
-</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 16px;">
-  <div style="background:#eaf0e8;border-radius:10px;padding:12px;">
-    <div class="act-item" style="background:white;"><div class="act-emoji">🏔️</div><div><div class="act-name" style="font-size:12px;">Sellaronda Bike Day <span class="act-badge badge-mtb">Check Date!</span></div><div class="act-desc">יום אחד באוגוסט כבישים סגורים לרכבים. ~53km, 1,800m. לבדוק תאריך ב-valgardena.it</div></div></div>
-    <div class="act-item" style="background:white;margin-top:8px;"><div class="act-emoji">🏔️</div><div><div class="act-name" style="font-size:12px;">Val di Funes — רכיבה</div><div class="act-desc">עמק יפהפה 30 דק' מאורטיזיי. דרכי עפר עם נוף ל-Odle.</div></div></div>
-    <a class="map-btn" href="https://maps.google.com/?q=Val+di+Funes,+Italy" target="_blank">📍 Val di Funes</a>
-  </div>
-  <div style="background:#f0ede8;border-radius:10px;padding:12px;">
-    <div class="act-item" style="background:white;"><div class="act-emoji">🌊</div><div><div class="act-name" style="font-size:12px;">Lago di Carezza <span class="act-badge badge-highlight">Rainbow Lake</span></div><div class="act-desc">30 דק' מאורטיזיי. מים ירוק-כחולים עם Latemar מאחור. ללכת מוקדם.</div></div></div>
-    <a class="map-btn" href="https://maps.google.com/?q=Lago+di+Carezza,+Italy" target="_blank">📍 Lago di Carezza</a>
-    <div class="act-item" style="background:white;margin-top:8px;"><div class="act-emoji">⛪</div><div><div class="act-name" style="font-size:12px;">Santa Maddalena — Val di Funes</div><div class="act-desc">הכנסייה הכי מצולמת באיטליה — שדות ירוקים עם צוקי ה-Odle ברקע.</div></div></div>
-    <a class="map-btn" href="https://maps.google.com/?q=Santa+Maddalena,+Val+di+Funes,+Italy" target="_blank">📍 Santa Maddalena</a>
-  </div>
-</div>
-</div>
-</div>
-<div class="day-card">
-  <div class="day-header" onclick="toggle(this)">
-    <div class="day-num" style="background:#2c5f8a;"><div class="num" style="color:#7bbfea;">22</div><div class="mon">AUG</div><div class="dow">SAT</div></div>
-    <div class="day-info">
-      <div class="day-title">MTB Day 3 — Sella Ronda</div>
-      <div class="day-sub">Val Gardena · Epic loop around the Sella massif · Or free choice day</div>
-      <div class="day-tags">
-        <span class="tag tag-mtb">🚵 Full MTB Day</span>
-        <span class="tag tag-sight">🏔️ 53km loop</span>
-        <span class="tag tag-stay">🏨 Val Gardena</span>
-      </div>
-    </div>
-    <div class="day-toggle">▾</div>
-  </div>
-  <div class="day-body">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 16px 0;">
-  <div style="background:#eaf0e8;border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;color:#2d6a4f;text-align:center;">🚵 עם רכיבה</div>
-  <div style="background:#f0ede8;border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;color:#6a5a40;text-align:center;">🥾 ללא רכיבה</div>
-</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 16px;">
-  <div style="background:#eaf0e8;border-radius:10px;padding:12px;">
-    <div class="act-item" style="background:white;"><div class="act-emoji">🏔️</div><div><div class="act-name" style="font-size:12px;">Sella Ronda <span class="act-badge badge-highlight">⭐ Epic</span></div><div class="act-desc">4 מעברי הרים, 53km, 1,800m. עם eMTB לגמרי אפשרי. בכיוון השעון — Passo Sella, Pordoi, Campolongo, Gardena.</div><div class="act-tip">💡 יציאה 7:30am. Rifugio בכל מעבר.</div></div></div>
-    <a class="map-btn" href="https://maps.google.com/?q=Sella+Ronda,+Val+Gardena" target="_blank">📍 Sella Ronda</a>
-  </div>
-  <div style="background:#f0ede8;border-radius:10px;padding:12px;">
-    <div class="act-item" style="background:white;"><div class="act-emoji">🚠</div><div><div class="act-name" style="font-size:12px;">Seceda — נוף מרהיב</div><div class="act-desc">גונדולה מאורטיזיי ל-2,519m. טיול על הרכס עם פנורמה ל-Odle. ניתן לרדת ברגל.</div></div></div>
-    <a class="map-btn" href="https://maps.google.com/?q=Seceda,+Ortisei,+Italy" target="_blank">📍 Seceda</a>
-    <div class="act-item" style="background:white;margin-top:8px;"><div class="act-emoji">🛍️</div><div><div class="act-name" style="font-size:12px;">Ortisei — קניות ורחוב</div><div class="act-desc">גילוף עץ טירולי, גלידה, אפריטיב. יום נינוח לפני ונציה.</div></div></div>
-    <a class="map-btn" href="https://maps.google.com/?q=Ortisei+center,+Italy" target="_blank">📍 Ortisei</a>
-  </div>
-</div>
-<div class="day-section"><div class="ds-label"><span class="ds-icon">🍽️</span><span class="ds-title">Dinner — Last Mountain Night</span></div>
-<div class="act-item"><div class="act-emoji">🍷</div><div><div class="act-name">Tubladel Restaurant</div><div class="act-desc">מטבח Ladin מסורתי באורטיזיי. ערב אחרון בהרים.</div></div></div>
-<a class="map-btn" href="https://maps.google.com/?q=Tubladel+Restaurant,+Ortisei" target="_blank">📍 Tubladel</a>
-</div>
-</div>
-<div class="day-card">
-  <div class="day-header" onclick="toggle(this)">
-    <div class="day-num"><div class="num">23</div><div class="mon">AUG</div><div class="dow">SUN</div></div>
-    <div class="day-info">
-      <div class="day-title">Val Gardena → Verona</div>
-      <div class="day-sub">2h drive south · Arena di Verona · Last proper dinner</div>
-      <div class="day-tags">
-        <span class="tag tag-drive">🚗 2h drive</span>
-        <span class="tag tag-sight">🏟️ Verona</span>
-        <span class="tag tag-stay">🏨 Verona</span>
-      </div>
-    </div>
-    <div class="day-toggle">▾</div>
-  </div>
-  <div class="day-body">
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">🛣️</span><span class="ds-title">Drive to Verona</span></div>
-      <div class="drive-box">🛣️ <span><strong>2h</strong> — A22 Autostrada del Brennero south to Verona. Easy motorway drive. Leave mid-morning, arrive for lunch. Return rental car at Verona Porta Nuova station.</span></div>
-      <a class="map-btn" href="https://maps.google.com/?q=Val+Gardena+to+Verona+Italy" target="_blank">📍 Directions to Verona</a>
-    </div>
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">🏟️</span><span class="ds-title">Verona</span></div>
-      <div class="act-item">
-        <div class="act-emoji">🏟️</div>
-        <div>
-          <div class="act-name">Arena di Verona <span class="act-badge badge-highlight">2,000-year-old Amphitheater</span></div>
-          <div class="act-desc">One of the best-preserved Roman amphitheaters in the world. Summer opera season runs through August — check for a performance on Aug 23. Even without opera the arena at sunset is spectacular.</div>
-          <div class="act-tip">💡 Check arena.it for Aug 23 opera program. Book tickets in advance if there is one — an unforgettable experience for the whole family.</div>
-        </div>
-      </div>
-      <a class="map-btn" href="https://maps.google.com/?q=Arena+di+Verona,+Italy" target="_blank">📍 Arena di Verona</a>
-      <div class="act-item">
-        <div class="act-emoji">💌</div>
-        <div>
-          <div class="act-name">Juliet's House (Casa di Giulietta)</div>
-          <div class="act-desc">The famous balcony from Romeo and Juliet. Touristy but fun for the teens. 5 min walk from the Arena. Free to see the courtyard.</div>
-          <a class="map-btn" href="https://maps.google.com/?q=Casa+di+Giulietta,+Verona,+Italy" target="_blank">📍 Juliet's House</a>
-        </div>
-      </div>
-    </div>
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">🍽️</span><span class="ds-title">Dinner — Last Real Dinner</span></div>
-      <div class="resto-item">
-        <div class="resto-top">
-          <div class="resto-name">Osteria del Bugiardo <span class="act-badge badge-tip">Verona Classic</span></div>
-          <div class="resto-meta"><div class="resto-stars">★★★★½</div><div class="resto-price">$$</div></div>
-        </div>
-        <div class="resto-desc">Local Valpolicella wines, risotto all'Amarone, great atmosphere in a historic building. Lively and kid-friendly.</div>
-      </div>
-      <a class="map-btn" href="https://maps.google.com/?q=Osteria+del+Bugiardo,+Verona,+Italy" target="_blank">📍 Directions</a>
-    </div>
+  <div style="background:#f0f9f4;border:1.5px solid #b8dbc8;border-radius:10px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center;">
+    <div><div style="font-size:11px;font-weight:600;">Aug 24–29 · Chania, Crete</div><div style="font-size:10px;color:var(--muted);">5 nights · managed separately</div></div>
+    <span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px;background:#d4edda;color:#155724;">✅ Booked</span>
   </div>
 </div>
 
-<div class="day-card">
-  <div class="day-header" onclick="toggle(this)">
-    <div class="day-num"><div class="num">24</div><div class="mon">AUG</div><div class="dow">MON</div></div>
-    <div class="day-info">
-      <div class="day-title">Verona → Rome FCO ✈️</div>
-      <div class="day-sub">Train to Rome · Flight home Aug 24</div>
-      <div class="day-tags">
-        <span class="tag tag-drive">🚄 Train 2.5h</span>
-        <span class="tag tag-sight">✈️ FCO</span>
-      </div>
-    </div>
-    <div class="day-toggle">▾</div>
-  </div>
-  <div class="day-body">
-    <div class="day-section">
-      <div class="ds-label"><span class="ds-icon">🚄</span><span class="ds-title">Verona to Rome</span></div>
-      <div class="act-item">
-        <div class="act-emoji">🚄</div>
-        <div>
-          <div class="act-name">High-speed train — Verona → Roma Termini</div>
-          <div class="act-desc">Frecciarossa takes 2.5h direct. Return rental car in Verona the night before (or at the station). Book train tickets on trenitalia.com — 50–90€/person, book early for best prices.</div>
-          <div class="act-tip">💡 Book the earliest train that comfortably reaches FCO 3h before your flight. Termini → FCO is 30 min by Leonardo Express train.</div>
-        </div>
-      </div>
-      <a class="map-btn" href="https://maps.google.com/?q=Verona+Porta+Nuova+train+station" target="_blank">📍 Verona Train Station</a>
-    </div>
-  </div>
+<div class="section-header"><div class="section-label">📌 לפני שיוצאים</div></div>
+<div class="card">
+<div class="card-title">Checklist</div>
+<div style="display:grid;gap:6px;margin-top:8px;font-size:12.5px;">
+  <div>🚵 Sport Varda (Cortina) — להזמין eMTB מראש</div>
+  <div>🚵 Intersport Ortisei — להזמין eMTB מראש</div>
+  <div>🎫 Dolomiti Supersummer Card — לקנות עם eMTB באורטיזיי</div>
+  <div>🚗 רכב — SUV גדול, FCO → FCO</div>
+  <div>⚠️ גלאי CO נייד — לוילה ב-Val Gardena</div>
+  <div>💶 מזומן אירו — ריפוג'י מזומן בלבד</div>
+  <div>📱 Komoot — להוריד מפות Dolomites offline</div>
+  <div>🏨 Orvieto hotel — עדיין לא מוזמן!</div>
 </div>
-
-<!-- NOTES -->
-<div class="section-header"><div class="section-label">Where to Stay</div></div>
-
-<div class="notes-card">
-  <div class="notes-title">🏨 Accommodations — Aug 16–24</div>
-
-  <div style="display:grid;gap:10px;margin-top:4px;">
-
-    <!-- BOLOGNA -->
-    <div style="background:#f0f9f4;border:1.5px solid #b8dbc8;border-radius:12px;padding:14px 16px;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px;">
-        <div>
-          <div style="font-size:10px;font-family:'DM Mono',monospace;letter-spacing:2px;color:var(--terracotta);text-transform:uppercase;margin-bottom:3px;">Night 1 · Aug 16 · Bologna</div>
-          <div style="font-weight:700;font-size:14px;">Royal Hotel Carlton</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Rating 8.9 · מרכז בולוניה · ספא · 2 חדרים · €288 שולם</div>
-        </div>
-        <span style="font-size:9.5px;font-weight:700;padding:3px 10px;border-radius:100px;background:#d4edda;color:#155724;white-space:nowrap;">✅ Booked</span>
-      </div>
-      <div style="background:white;border-radius:8px;padding:9px 12px;border:1px solid #b8dbc8;font-size:11px;color:#2d6a4f;margin-bottom:8px;">
-        צ'ק-אין 16.8 מ-14:00 · צ'ק-אאוט 17.8 עד 12:00 · Conf: 5105581437 · PIN: 8474
-      </div>
-      <a href="https://www.booking.com/hotel/it/royalcarlton.html" target="_blank" style="font-size:10px;font-weight:600;color:var(--sky);text-decoration:none;background:#e8eef5;padding:4px 12px;border-radius:100px;display:inline-block;">📍 View on Booking</a>
-    </div>
-
-    <!-- CORTINA -->
-    <div style="background:#f0f9f4;border:1.5px solid #b8dbc8;border-radius:12px;padding:14px 16px;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px;">
-        <div>
-          <div style="font-size:10px;font-family:'DM Mono',monospace;letter-spacing:2px;color:var(--sky);text-transform:uppercase;margin-bottom:3px;">Nights 2–3 · Aug 17–19 · Cortina</div>
-          <div style="font-weight:700;font-size:14px;">Hotel Villa Argentina</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Rating 8.3 · Pocol · 4 חדרים · 2 לילות</div>
-        </div>
-        <span style="font-size:9.5px;font-weight:700;padding:3px 10px;border-radius:100px;background:#d4edda;color:#155724;white-space:nowrap;">✅ Booked</span>
-      </div>
-      <div style="background:white;border-radius:8px;padding:9px 12px;border:1px solid #b8dbc8;font-size:11px;color:#2d6a4f;margin-bottom:6px;">
-        צ'ק-אין 17.8 מ-14:00 · צ'ק-אאוט 19.8 ב-07:00 · Conf: 6562484885 · PIN: 5037
-      </div>
-      <div style="background:#fff3cd;border-radius:8px;padding:8px 12px;font-size:11px;color:#856404;margin-bottom:8px;">
-        ⚠️ €2,948 טרם שולם — לבדוק תאריך תשלום
-      </div>
-      <a href="https://www.booking.com/hotel/it/villa-argentina.html" target="_blank" style="font-size:10px;font-weight:600;color:var(--sky);text-decoration:none;background:#e8eef5;padding:4px 12px;border-radius:100px;display:inline-block;">📍 View on Booking</a>
-    </div>
-
-    <!-- VAL GARDENA -->
-    <div style="background:#f0f9f4;border:1.5px solid #b8dbc8;border-radius:12px;padding:14px 16px;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px;">
-        <div>
-          <div style="font-size:10px;font-family:'DM Mono',monospace;letter-spacing:2px;color:#2d6a4f;text-transform:uppercase;margin-bottom:3px;">Nights 4–7 · Aug 19–23 · Val Gardena</div>
-          <div style="font-weight:700;font-size:14px;">188A Dolomites Villa Vastle</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Via Mureda 42, Ortisei · 8 מבוגרים + ילד · 4 לילות</div>
-        </div>
-        <span style="font-size:9.5px;font-weight:700;padding:3px 10px;border-radius:100px;background:#d4edda;color:#155724;white-space:nowrap;">✅ Booked</span>
-      </div>
-      <div style="background:white;border-radius:8px;padding:9px 12px;border:1px solid #b8dbc8;font-size:11px;color:#2d6a4f;margin-bottom:6px;">
-        צ'ק-אין 19.8 אחרי 15:00 · צ'ק-אאוט 23.8 לפני 09:00 · Self check-in · lockbox
-      </div>
-      <div style="background:#fdecea;border-radius:8px;padding:8px 12px;font-size:11px;color:#721c24;margin-bottom:8px;">
-        ⚠️ אין גלאי פחמן חד חמצני — להביא גלאי נייד
-      </div>
-      <a href="https://www.airbnb.com/rooms/946296778176840108" target="_blank" style="font-size:10px;font-weight:600;color:var(--sky);text-decoration:none;background:#e8eef5;padding:4px 12px;border-radius:100px;display:inline-block;">📍 View on Airbnb</a>
-    </div>
-
-    <!-- VENICE -->
-    <div style="background:var(--card-bg);border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px;">
-        <div>
-          <div style="font-size:10px;font-family:'DM Mono',monospace;letter-spacing:2px;color:var(--sky);text-transform:uppercase;margin-bottom:3px;">Night 8 · Aug 23 · Venice 🛶</div>
-          <div style="font-weight:700;font-size:14px;">Cà dell'arte Suite — Castello</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">ציון 9.3 · 1,047 ביקורות · 4 חדרים · שתי משפחות</div>
-        </div>
-        <span style="font-size:9.5px;font-weight:700;padding:3px 10px;border-radius:100px;background:#fff3cd;color:#856404;white-space:nowrap;">⏳ Pending</span>
-      </div>
-      <div style="background:#fff3cd;border-radius:8px;padding:8px 12px;font-size:11px;color:#856404;margin-bottom:8px;">
-        ⚠️ לבטל Domus 44 בורונה לפני הזמנה · PIN ביטול: 5315
-      </div>
-      <a href="https://www.booking.com/hotel/it/residenza-castello-5280.html?aid=8132308&checkin=2026-08-23&checkout=2026-08-24&no_rooms=4&group_adults=4&selected_currency=USD" target="_blank" style="font-size:10px;font-weight:600;color:var(--sky);text-decoration:none;background:#e8eef5;padding:4px 12px;border-radius:100px;display:inline-block;">📍 Book on Booking.com</a>
-    </div>
-
-    <!-- CRETE -->
-    <div style="background:#f0f9f4;border:1.5px solid #b8dbc8;border-radius:12px;padding:14px 16px;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px;">
-        <div>
-          <div style="font-size:10px;font-family:'DM Mono',monospace;letter-spacing:2px;color:#1a3a5c;text-transform:uppercase;margin-bottom:3px;">Nights 9–13 · Aug 24–29 · Chania, Crete 🇬🇷</div>
-          <div style="font-weight:700;font-size:14px;">כרתים — 5 לילות</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">טיסה Aegean FCO → חניה 24.8 ב-18:30 · חזרה 29.8 ב-06:00</div>
-        </div>
-        <span style="font-size:9.5px;font-weight:700;padding:3px 10px;border-radius:100px;background:#d4edda;color:#155724;white-space:nowrap;">✅ Booked</span>
-      </div>
-      <a href="https://www.booking.com/searchresults.html?ss=Chania+Crete&checkin=2026-08-24&checkout=2026-08-29&no_rooms=2&group_adults=4&aid=8132308" target="_blank" style="font-size:10px;font-weight:600;color:var(--sky);text-decoration:none;background:#e8eef5;padding:4px 12px;border-radius:100px;display:inline-block;">📍 Search Chania on Booking</a>
-    </div>
-
-  </div>
-
 </div>
 
 </main>
-<div class="section-header"><div class="section-label">Planning Notes</div></div>
-
-<div class="notes-card">
-  <div class="notes-title">📌 Book Before You Go</div>
-  <div class="note-item"><span class="note-icon">🚗</span><span><strong>Rental car</strong> — Book SUV or wagon now. August rates spike. Pick up at FCO, drop in Verona.</span></div>
-  <div class="note-item"><span class="note-icon">🚵</span><span><strong>eMTBs</strong> — Reserve at Sport Varda (Cortina) and Intersport Ortisei (Val Gardena) online. August bikes go fast, especially teen sizes.</span></div>
-  <div class="note-item"><span class="note-icon">🍽️</span><span><strong>Restaurants</strong> — Book Osteria Le Logge (Siena) and a Val Gardena dinner spot. August walk-ins are a gamble.</span></div>
-  <div class="note-item"><span class="note-icon">🚄</span><span><strong>Train</strong> — Verona → Rome Frecciarossa. Book at trenitalia.com. Early booking = half the price.</span></div>
-  <div class="note-item"><span class="note-icon">🎫</span><span><strong>Dolomiti Superski Bike Pass</strong> — Covers gondolas across the whole area. Worth it for 2+ riding days. Buy in Ortisei.</span></div>
-</div>
-
-<div class="notes-card">
-  <div class="notes-title">⚠️ Things to Know</div>
-  <div class="note-item"><span class="note-icon">🇮🇹</span><span><strong>Ferragosto (Aug 16)</strong> — National holiday. Fuel stations, supermarkets, many restaurants closed. Stock up before leaving Rome.</span></div>
-  <div class="note-item"><span class="note-icon">⛈️</span><span><strong>Afternoon thunderstorms</strong> — Daily in August. Start rides by 8–9am, be off exposed ridges by 1pm. Non-negotiable.</span></div>
-  <div class="note-item"><span class="note-icon">🏔️</span><span><strong>Altitude</strong> — Trails reach 2,500m. First day light activity only. Headaches are common for kids if you push too hard too fast.</span></div>
-  <div class="note-item"><span class="note-icon">💶</span><span><strong>South Tyrol is expensive</strong> — This region (Alto Adige / Südtirol) is the most expensive in Italy. Budget 180–280€/night for accommodation, 25–35€/person for dinner.</span></div>
-  <div class="note-item"><span class="note-icon">🅿️</span><span><strong>Parking in Dolomites</strong> — Paid everywhere, 15–25€/day. Many mountain areas require ZTL pass or are car-free. Use gondolas and shuttles.</span></div>
-</div>
-
-<div class="notes-card">
-  <div class="notes-title">🚵 eMTB Tips for This Trip</div>
-  <div class="note-item"><span class="note-icon">🔋</span><span><strong>Battery range</strong> — Full day eMTB in the Dolomites uses 50–80% battery depending on mode. Eco mode extends range. Rifugi can sometimes charge your bike during lunch.</span></div>
-  <div class="note-item"><span class="note-icon">🪖</span><span><strong>Helmets</strong> — Full-face or enduro helmet recommended. Rentals include a helmet but you can bring your own if preferred.</span></div>
-  <div class="note-item"><span class="note-icon">👕</span><span><strong>Pack</strong> — Layers are essential. It can be 28°C at the bottom and 12°C at 2,500m. Rain jacket always in the pack.</span></div>
-  <div class="note-item"><span class="note-icon">📱</span><span><strong>Komoot app</strong> — Download the Dolomites MTB map pack before arriving. Works offline. Best navigation for trails in this region.</span></div>
-</div>
-
-<footer>DOLOMITES <span>♦</span> AUGUST 2026 <span>♦</span> ITALY</footer>
-
-</main>
-
-<script>
-function toggle(header) {
-  var body = header.nextElementSibling;
-  var arrow = header.querySelector('.day-toggle');
-  var isOpen = body.classList.contains('open');
-  body.classList.toggle('open');
-  arrow.classList.toggle('open');
-}
-</script>
+<footer>ITALY + CRETE <span>♦</span> AUGUST 2026</footer>
 </body>
 </html>
