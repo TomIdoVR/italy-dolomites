@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cortina → Val Gardena — Italy 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root { --cream: #f5f0e8; --ink: #1a1a18; --terracotta: #c4512f; --sage: #4a6741; --sky: #2c5f8a; --gold: #c4912f; --muted: #8a8070; --border: #d8d0c0; --card-bg: #faf7f2; --green: #2d6a4f; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "DM Sans", sans-serif; background: var(--cream); color: var(--ink); font-size: 15px; line-height: 1.6; }
+.day-nav { background: var(--ink); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.day-nav-inner { max-width: 780px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; }
+.day-nav-inner::-webkit-scrollbar { display: none; }
+.nav-home { padding: 13px 16px; color: var(--terracotta); text-decoration: none; font-size: 16px; flex-shrink: 0; border-right: 1px solid rgba(255,255,255,0.08); }
+.nav-day { padding: 11px 12px; color: rgba(245,240,232,0.45); text-decoration: none; font-size: 11px; font-weight: 600; flex-shrink: 0; border-right: 1px solid rgba(255,255,255,0.06); white-space: nowrap; }
+.nav-day:hover { color: rgba(245,240,232,0.8); }
+.nav-day.active { color: var(--gold); background: rgba(255,255,255,0.05); }
+.nav-prev-next { margin-left: auto; display: flex; flex-shrink: 0; border-left: 1px solid rgba(255,255,255,0.08); }
+.nav-prev-next a { padding: 13px 16px; color: rgba(245,240,232,0.5); text-decoration: none; font-size: 14px; }
+.nav-prev-next a:hover { color: white; }
+.day-hero { background: var(--ink); color: var(--cream); padding: 36px 24px 30px; position: relative; overflow: hidden; }
+.day-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(196,81,47,0.15) 0%, transparent 60%); }
+.day-hero-inner { position: relative; max-width: 780px; margin: 0 auto; }
+.day-hero-label { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--terracotta); margin-bottom: 8px; }
+.day-hero-title { font-family: "Playfair Display", serif; font-size: clamp(28px, 6vw, 48px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.day-hero-title em { font-style: italic; color: var(--terracotta); }
+.day-hero-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { background: rgba(245,240,232,0.08); border: 1px solid rgba(245,240,232,0.15); border-radius: 100px; padding: 4px 12px; font-size: 11px; color: rgba(245,240,232,0.65); }
+main { max-width: 780px; margin: 0 auto; padding: 24px 18px 80px; }
+.section-header { display: flex; align-items: center; gap: 10px; margin: 28px 0 14px; }
+.section-header::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.section-label { font-family: "DM Mono", monospace; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.split-col { border-radius: 14px; padding: 16px; }
+.split-col.mtb { background: #eaf0e8; border: 1.5px solid #b8dbc8; }
+.split-col.no-mtb { background: #f0ede8; border: 1.5px solid #ddd0c0; }
+.split-header { font-size: 11px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.split-col.mtb .split-header { color: #2d6a4f; }
+.split-col.no-mtb .split-header { color: #6a5a40; }
+@media(max-width: 520px) { .split { grid-template-columns: 1fr; } }
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step { display: grid; grid-template-columns: 32px 1fr; gap: 12px; position: relative; }
+.step:not(:last-child)::before { content: ""; position: absolute; left: 15px; top: 32px; bottom: -4px; width: 2px; background: var(--border); }
+.step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px; position: relative; z-index: 1; }
+.step-body { padding-bottom: 20px; }
+.step-title { font-weight: 700; font-size: 13.5px; margin-bottom: 3px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.step-time { font-size: 10px; font-family: "DM Mono", monospace; color: var(--muted); background: var(--cream); padding: 2px 7px; border-radius: 100px; }
+.step-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+.step-tip { margin-top: 7px; background: #e8eef5; border-radius: 7px; padding: 7px 10px; font-size: 11.5px; color: var(--sky); line-height: 1.45; }
+.step-warn { margin-top: 7px; background: #fff3cd; border-radius: 7px; padding: 7px 10px; font-size: 11.5px; color: #856404; line-height: 1.45; }
+.card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(26,26,24,0.04); }
+.card-title { font-weight: 700; font-size: 13.5px; margin-bottom: 4px; }
+.card-sub { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.badge { font-size: 9.5px; font-weight: 700; padding: 2px 8px; border-radius: 100px; }
+.badge-highlight { background: #fdecea; color: #b03020; }
+.badge-mtb { background: #eaf0e8; color: #2a5a20; }
+.badge-tip { background: #e8eef5; color: #1a4070; }
+.badge-free { background: #f0f0e0; color: #4a4a10; }
+.badge-warn { background: #fff3cd; color: #856404; }
+.badge-booked { background: #d4edda; color: #155724; }
+.map-btn { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; color: var(--sky); text-decoration: none; padding: 4px 11px; background: #e8eef5; border-radius: 100px; margin-top: 8px; border: 1px solid rgba(44,95,138,0.15); }
+.drive-box { display: flex; align-items: center; gap: 10px; background: #f0f5ec; border-radius: 10px; padding: 11px 14px; font-size: 12.5px; color: var(--sage); font-weight: 500; margin-bottom: 10px; }
+footer { text-align: center; padding: 20px 0 60px; font-family: "Playfair Display", serif; font-size: 14px; letter-spacing: 2px; color: var(--muted); }
+footer span { color: var(--terracotta); }
+</style>
+</head>
+<body>
+<nav class="day-nav"><div class="day-nav-inner"><a href="index.html" class="nav-home">🏔️</a><a href="day-16.html" class="nav-day ">Aug 16</a><a href="day-17.html" class="nav-day ">Aug 17</a><a href="day-18.html" class="nav-day ">Aug 18</a><a href="day-19.html" class="nav-day active">Aug 19</a><a href="day-20.html" class="nav-day ">Aug 20</a><a href="day-21.html" class="nav-day ">Aug 21</a><a href="day-22.html" class="nav-day ">Aug 22</a><a href="day-23.html" class="nav-day ">Aug 23</a><a href="day-24.html" class="nav-day ">Aug 24</a><div class="nav-prev-next"><a href="day-18.html">←</a><a href="day-20.html">→</a></div></div></nav>
+<div class="day-hero">
+  <div class="day-hero-inner">
+    <div class="day-hero-label">Aug 19 · יום רביעי · יום 4 · עצירה: Lago di Braies</div>
+    <h1 class="day-hero-title">Cortina →<br><em>Val Gardena</em></h1>
+    <div class="day-hero-chips"><div class="chip">🌊 Lago di Braies</div><div class="chip">🚗 1.5h נסיעה</div><div class="chip">🚵 השכרת eMTB</div><div class="chip">🏡 Villa Vastle</div></div>
+  </div>
+</div>
+<main>
+
+<div class="section-header"><div class="section-label">🚗 מעבר ל-Val Gardena</div></div>
+<div class="steps"><div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">⏰ צ'ק-אאוט — Villa Argentina <span class="step-time">07:00</span> </div><div class="step-desc">צ'ק-אאוט מוקדם — 07:00. לארוז הכל מהלילה הקודם. אופניים כבר בחוץ.</div><div class="step-warn">⚠️ צ'ק-אאוט ב-07:00 בדיוק — כתוב בהזמנה</div></div></div><div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">🌊 עצירה — Lago di Braies <span class="step-time">08:00 → 10:00</span> </div><div class="step-desc">האגם הכי מצולם בדולומיטים — מים טורקיז עם קירות סלע אנכיים. לולאה קצרה סביב האגם: ~3.5km, שעה. סירות חתירה להשכרה.</div><div class="step-tip">💡 להגיע לפני 09:00 — אחרי 10:00 החניה עולה €30 ויש תור. זו העצירה הכי שווה ביום.</div><div class="step-warn">⚠️ החניון (€8) מתמלא מוקדם. אם מלא — יש shuttle מ-Braies.</div><a class="map-btn" href="https://maps.google.com/?q=Lago+di+Braies+Dolomites" target="_blank">📍 Lago di Braies</a></div></div><div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">🚗 המשך נסיעה — Braies → Ortisei <span class="step-time">10:00 → 12:00</span> </div><div class="step-desc">SS49 → Brunico → SS242 לעמק Val Gardena. ~1.5 שעות. הנסיעה עצמה יפה — עמקים צרים ועיירות טירוליות.</div><a class="map-btn" href="https://www.google.com/maps/dir/Lago+di+Braies/Ortisei,+Val+Gardena,+Italy" target="_blank">📍 Directions to Ortisei</a></div></div><div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">🚵 השכרת eMTB — Intersport Ortisei <span class="step-time">12:30</span> </div><div class="step-desc">הבחירה הטובה ביותר בעמק — הכי גדול, הכי מגוון. ~€60–80/אופניים/יום. קנו כאן גם את Dolomiti Supersummer Card (מכסה כל הגונדולות). <strong>להזמין מראש!</strong></div><div class="step-warn">⚠️ להזמין מראש — באוגוסט אין eMTB פנוי ברגע האחרון</div><a class="map-btn" href="https://maps.google.com/?q=Intersport+Ortisei+Val+Gardena" target="_blank">📍 Intersport Ortisei</a></div></div><div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-title">🏡 צ'ק-אין — 188A Dolomites Villa Vastle <span class="step-time">מ-15:00</span> <span class="badge badge-highlight">✅ Booked</span></div><div class="step-desc">Via Mureda 42, Ortisei. וילה פרטית ל-8 מבוגרים + ילדים. Self check-in עם lockbox.</div><div class="step-warn">⚠️ אין גלאי פחמן חד חמצני בנכס — להביא גלאי נייד!</div><a class="map-btn" href="https://maps.google.com/?q=Via+Mureda+42+Ortisei" target="_blank">📍 Villa Vastle</a></div></div><div class="step"><div class="step-num">6</div><div class="step-body"><div class="step-title">🚶 חקירת אורטיזיי <span class="step-time">17:00</span> </div><div class="step-desc">מרכז אורטיזיי — עיירה טירולית מושלמת. חנויות גילוף עץ מקומי, Piazza Sant'Ulrich, גלידה. הלילה הראשון — רגיעה.</div><a class="map-btn" href="https://maps.google.com/?q=Ortisei+center+Val+Gardena" target="_blank">📍 Ortisei Center</a></div></div></div>
+</main>
+<footer>ITALY 2026 <span>♦</span> AUGUST</footer>
+</body>
+</html>
