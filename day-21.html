@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Day — Val Gardena — Italy 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root { --cream: #f5f0e8; --ink: #1a1a18; --terracotta: #c4512f; --sage: #4a6741; --sky: #2c5f8a; --gold: #c4912f; --muted: #8a8070; --border: #d8d0c0; --card-bg: #faf7f2; --green: #2d6a4f; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "DM Sans", sans-serif; background: var(--cream); color: var(--ink); font-size: 15px; line-height: 1.6; }
+.day-nav { background: var(--ink); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.day-nav-inner { max-width: 780px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; }
+.day-nav-inner::-webkit-scrollbar { display: none; }
+.nav-home { padding: 13px 16px; color: var(--terracotta); text-decoration: none; font-size: 16px; flex-shrink: 0; border-right: 1px solid rgba(255,255,255,0.08); }
+.nav-day { padding: 11px 12px; color: rgba(245,240,232,0.45); text-decoration: none; font-size: 11px; font-weight: 600; flex-shrink: 0; border-right: 1px solid rgba(255,255,255,0.06); white-space: nowrap; }
+.nav-day:hover { color: rgba(245,240,232,0.8); }
+.nav-day.active { color: var(--gold); background: rgba(255,255,255,0.05); }
+.nav-prev-next { margin-left: auto; display: flex; flex-shrink: 0; border-left: 1px solid rgba(255,255,255,0.08); }
+.nav-prev-next a { padding: 13px 16px; color: rgba(245,240,232,0.5); text-decoration: none; font-size: 14px; }
+.nav-prev-next a:hover { color: white; }
+.day-hero { background: var(--ink); color: var(--cream); padding: 36px 24px 30px; position: relative; overflow: hidden; }
+.day-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(196,81,47,0.15) 0%, transparent 60%); }
+.day-hero-inner { position: relative; max-width: 780px; margin: 0 auto; }
+.day-hero-label { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--terracotta); margin-bottom: 8px; }
+.day-hero-title { font-family: "Playfair Display", serif; font-size: clamp(28px, 6vw, 48px); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.day-hero-title em { font-style: italic; color: var(--terracotta); }
+.day-hero-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { background: rgba(245,240,232,0.08); border: 1px solid rgba(245,240,232,0.15); border-radius: 100px; padding: 4px 12px; font-size: 11px; color: rgba(245,240,232,0.65); }
+main { max-width: 780px; margin: 0 auto; padding: 24px 18px 80px; }
+.section-header { display: flex; align-items: center; gap: 10px; margin: 28px 0 14px; }
+.section-header::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.section-label { font-family: "DM Mono", monospace; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.split-col { border-radius: 14px; padding: 16px; }
+.split-col.mtb { background: #eaf0e8; border: 1.5px solid #b8dbc8; }
+.split-col.no-mtb { background: #f0ede8; border: 1.5px solid #ddd0c0; }
+.split-header { font-size: 11px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.split-col.mtb .split-header { color: #2d6a4f; }
+.split-col.no-mtb .split-header { color: #6a5a40; }
+@media(max-width: 520px) { .split { grid-template-columns: 1fr; } }
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step { display: grid; grid-template-columns: 32px 1fr; gap: 12px; position: relative; }
+.step:not(:last-child)::before { content: ""; position: absolute; left: 15px; top: 32px; bottom: -4px; width: 2px; background: var(--border); }
+.step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px; position: relative; z-index: 1; }
+.step-body { padding-bottom: 20px; }
+.step-title { font-weight: 700; font-size: 13.5px; margin-bottom: 3px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.step-time { font-size: 10px; font-family: "DM Mono", monospace; color: var(--muted); background: var(--cream); padding: 2px 7px; border-radius: 100px; }
+.step-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+.step-tip { margin-top: 7px; background: #e8eef5; border-radius: 7px; padding: 7px 10px; font-size: 11.5px; color: var(--sky); line-height: 1.45; }
+.step-warn { margin-top: 7px; background: #fff3cd; border-radius: 7px; padding: 7px 10px; font-size: 11.5px; color: #856404; line-height: 1.45; }
+.card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(26,26,24,0.04); }
+.card-title { font-weight: 700; font-size: 13.5px; margin-bottom: 4px; }
+.card-sub { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.badge { font-size: 9.5px; font-weight: 700; padding: 2px 8px; border-radius: 100px; }
+.badge-highlight { background: #fdecea; color: #b03020; }
+.badge-mtb { background: #eaf0e8; color: #2a5a20; }
+.badge-tip { background: #e8eef5; color: #1a4070; }
+.badge-free { background: #f0f0e0; color: #4a4a10; }
+.badge-warn { background: #fff3cd; color: #856404; }
+.badge-booked { background: #d4edda; color: #155724; }
+.map-btn { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; color: var(--sky); text-decoration: none; padding: 4px 11px; background: #e8eef5; border-radius: 100px; margin-top: 8px; border: 1px solid rgba(44,95,138,0.15); }
+.drive-box { display: flex; align-items: center; gap: 10px; background: #f0f5ec; border-radius: 10px; padding: 11px 14px; font-size: 12.5px; color: var(--sage); font-weight: 500; margin-bottom: 10px; }
+footer { text-align: center; padding: 20px 0 60px; font-family: "Playfair Display", serif; font-size: 14px; letter-spacing: 2px; color: var(--muted); }
+footer span { color: var(--terracotta); }
+</style>
+</head>
+<body>
+<nav class="day-nav"><div class="day-nav-inner"><a href="index.html" class="nav-home">🏔️</a><a href="day-16.html" class="nav-day ">Aug 16</a><a href="day-17.html" class="nav-day ">Aug 17</a><a href="day-18.html" class="nav-day ">Aug 18</a><a href="day-19.html" class="nav-day ">Aug 19</a><a href="day-20.html" class="nav-day ">Aug 20</a><a href="day-21.html" class="nav-day active">Aug 21</a><a href="day-22.html" class="nav-day ">Aug 22</a><a href="day-23.html" class="nav-day ">Aug 23</a><a href="day-24.html" class="nav-day ">Aug 24</a><div class="nav-prev-next"><a href="day-20.html">←</a><a href="day-22.html">→</a></div></div></nav>
+<div class="day-hero">
+  <div class="day-hero-inner">
+    <div class="day-hero-label">Aug 21 · יום שישי · יום 6 · יום חופשי</div>
+    <h1 class="day-hero-title">Free Day —<br><em>Val Gardena</em></h1>
+    <div class="day-hero-chips"><div class="chip">🌊 Lago di Carezza</div><div class="chip">⛪ Santa Maddalena</div><div class="chip">🚵 Val di Funes</div><div class="chip">🥾 Adolf Munkel Weg</div></div>
+  </div>
+</div>
+<main>
+
+<div class="section-header"><div class="section-label">😴 יום חופשי — לנשום</div></div>
+<div class="card">
+  <div class="card-sub">יום בינים. לא לנסות לדחוס יותר מדי — אחרי Alpe di Siusi אתמול ולפני Sella Ronda מחר, הגוף צריך קצת פחות.</div>
+</div>
+<div class="split"><div class="split-col mtb"><div class="split-header">🚵 עם רכיבה</div><div class="steps"><div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">📅 Sellaronda Bike Day — לבדוק תאריך! <span class="step-time">כל היום</span> </div><div class="step-desc">יום אחד באוגוסט הכבישים סגורים לרכבים — אופניים בלבד. ~53km סביב מסיף הסלה. לבדוק את התאריך המדויק ב-valgardena.it לפני הטיול.</div><div class="step-warn">⚠️ לבדוק תאריך ב-valgardena.it — זה לא כל יום ראשון, יום ספציפי בלבד</div><a class="map-btn" href="https://www.valgardena.it/en/summer/mountain-bikes/" target="_blank">📍 בדוק תאריך Sellaronda Day</a></div></div><div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">🏔️ חלופה: Val di Funes — רכיבה <span class="step-time">09:00 → 14:00</span> </div><div class="step-desc">אם אין Sellaronda Day — Val di Funes הוא עמק שקט 30 דק' מאורטיזיי. דרכי עפר בין שדות עם מצוקי ה-Odle מעל. פחות טכני, יותר נינוח. מושלם ליום חופשי.</div><div class="step-tip">💡 פונים לכיוון S. Maddalena / Santa Maddalena. שם מתחיל את הרכיבה.</div><a class="map-btn" href="https://maps.google.com/?q=Val+di+Funes+Dolomites" target="_blank">📍 Val di Funes</a></div></div></div></div><div class="split-col no-mtb"><div class="split-header">🥾 ללא רכיבה</div><div class="steps"><div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">🌊 Lago di Carezza — Rainbow Lake <span class="step-time">08:30</span> </div><div class="step-desc">30 דק' מאורטיזיי. מים ירוק-כחולים בלתי-אפשריים עם פסגות Latemar בהשתקפות. מסלול הליכה קצר סביב האגם: ~1.5km, 30 דק'.</div><div class="step-tip">💡 להגיע לפני 09:00 — מתמלא מהר. הנוף הכי יפה בבוקר כשהמים שקטים.</div><a class="map-btn" href="https://maps.google.com/?q=Lago+di+Carezza+Dolomites" target="_blank">📍 Lago di Carezza</a></div></div><div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">⛪ Santa Maddalena — Val di Funes <span class="step-time">10:00</span> </div><div class="step-desc">הכנסייה הכי מצולמת באיטליה — S. Maddalena הלבנה בין שדות ירוקים עם מצוקי ה-Odle ברקע. ~30 דק' מאורטיזיי. הליכה קצרה סביב הכפר.</div><div class="step-tip">💡 האור הכי יפה בבוקר. להביא מצלמה.</div><a class="map-btn" href="https://maps.google.com/?q=Santa+Maddalena+Val+di+Funes+Italy" target="_blank">📍 Santa Maddalena</a></div></div><div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">🥾 Adolf Munkel Weg — טיול בין הצוקים <span class="step-time">11:00 → 14:00</span> <span class="badge badge-highlight">⭐ מומלץ</span></div><div class="step-desc">מהכפר Zannes/Zans, שביל 35 לאורך מרגלות מצוקי ה-Odle. ~8km, ~3 שעות. מסלול מפורסם — "קולנוע הדולומיטים". מסתיים בבקתת Geisleralm.</div><div class="step-tip">💡 זה המסלול שממליץ עליו גם שי מלכא — מהמובחרים בדולומיטים.</div><a class="map-btn" href="https://maps.google.com/?q=Zannes+Val+di+Funes+trailhead" target="_blank">📍 Zannes Trailhead</a></div></div><div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">🍽️ צהריים — Geisleralm <span class="step-time">13:30</span> </div><div class="step-desc">בקתה בסוף המסלול. Kaiserschmarrn, Knödel, מנות מקומיות. נוף ישיר לצוקי ה-Odle. הילדים יאהבו את ה-Kaiserschmarrn (פנקייק מפורר עם רוטב פירות).</div><a class="map-btn" href="https://maps.google.com/?q=Geisleralm+Val+di+Funes" target="_blank">📍 Geisleralm</a></div></div></div></div></div>
+<div class="section-header"><div class="section-label">🌆 ערב — אורטיזיי</div></div>
+<div class="card">
+  <div class="card-title">🍷 ארוחת ערב — ניסיון מטבח Ladin</div>
+  <div class="card-sub"><strong>Tubladel</strong> — מסעדה עם מטבח Ladin מסורתי. Schlutzkrapfen, Gröstl (תפוחי אדמה עם בשר), Ciastel (קינוח מקומי). המטבח הייחודי ביותר שתאכלו בטיול.<br><br>רחוב המרכז של אורטיזיי — גלידה, חנויות גילוף עץ טירוליות (שווה להיכנס).</div>
+  <a class="map-btn" href="https://maps.google.com/?q=Tubladel+Restaurant+Ortisei" target="_blank">📍 Tubladel</a>
+</div>
+</main>
+<footer>ITALY 2026 <span>♦</span> AUGUST</footer>
+</body>
+</html>
